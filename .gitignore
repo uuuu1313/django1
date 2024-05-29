@@ -12,3 +12,5 @@ db.sqlite3-journal
 media
 settings.py
 config/settings.py
+mysite/settings.py
+.env
