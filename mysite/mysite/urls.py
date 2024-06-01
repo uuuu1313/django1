@@ -18,7 +18,9 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('polls', include('polls.urls')), # /polls/~ 로 시작하는 url은 polls의 urls.py를 따라라
+    path('polls/', include('polls.urls')), # /polls/~ 로 시작하는 url은 polls의 urls.py를 따라라
     path('admin/', admin.site.urls),
     path('', views.index),
 ]
+
+handler404 = 'mysite.views.error_404_view'
