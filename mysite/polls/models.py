@@ -1,4 +1,4 @@
-from django.core.validators import MinLengthValidator, MaxLengthValidator
+from django.core.validators import MinLengthValidator, MaxLengthValidator, MinValueValidator, MaxValueValidator
 from django.db import models
 
 # Create your models here.
@@ -25,3 +25,13 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
+
+class Survey(models.Model):
+    user_name = models.CharField(max_length=200)
+    user_age = models.IntegerField(
+        validators=[
+            MinValueValidator(1),
+            MaxValueValidator(100)])
+
+    def __str__(self):
+        return f"{self.user_name}_{self.user_age}"
