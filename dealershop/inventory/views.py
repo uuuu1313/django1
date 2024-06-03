@@ -1,13 +1,23 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView, CreateView, ListView, DetailView, UpdateView, DeleteView
 from django.utils import timezone
 
 from .forms import CarForm
-from inventory.models import Car
+from .models import Car
 
 
 # Create your views here.
+
+@login_required
+def fbv_view(request):
+    context = {
+        'name': 'Jiuk'
+    }
+
+    return render(request, 'inventory/fbv.html', context)
 
 class MainView(TemplateView):
     template_name = 'inventory/main.html'
@@ -40,7 +50,7 @@ class CarCreateView(CreateView):
         print(form.cleaned_data)
         return super().form_valid(form)
 
-class CarListView(ListView):
+class CarListView(LoginRequiredMixin, ListView):
     model = Car
     paginate_by = 100 # 한페이지당 보여줄 갯수
 

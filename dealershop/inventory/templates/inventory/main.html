@@ -1,1 +1,8 @@
 <h1>Welcome to {{ name }}'s inventory main view</h1>
+<p>You are not logged in yet! Please login by clicking <a href="/accounts/login/">here</a></p>
+{% if user.is_authenticated %}
+<p>hello!</p>
+<a href="/accounts/logout/">logout</a>
+{% else %}
+<p>please login!</p>
+{% endif %}

@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.views.generic.base import RedirectView
 
 urlpatterns = [
+    path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     path('inventory/', include('inventory.urls')),
     path('', RedirectView.as_view(url='inventory')), # '/'루트 경로로 접속시 inventory로 리다이렉트함
