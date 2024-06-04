@@ -1,0 +1,7 @@
+<h1>Car Detail</h1>
+<h1>{{ object.brand }}</h1>
+<p>{{ object.model }}</p>
+<p>{{ object.color }}</p>
+<p>{{ object.year }}</p>
+<a href="{% url 'inventory:car-update' car.id %}">Update</a>
+<a href="{% url 'inventory:car-delete' car.id %}">Delete</a>

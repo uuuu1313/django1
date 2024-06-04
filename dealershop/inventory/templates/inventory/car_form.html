@@ -1,0 +1,6 @@
+<form method="POST">
+    {% csrf_token %}
+    <p>car form</p>
+    {{ form.as_p }}
+    <input type="submit" value="Send Message">
+</form>
